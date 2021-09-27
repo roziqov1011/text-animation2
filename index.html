@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shorts icon" href="https://github.com/roziqov1011/LOGO/blob/main/img/logo-white.png?raw=true">
+    <title>text animation2</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <section>
+        <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste voluptatum dolore consectetur magni consequuntur, alias laborum totam quibusdam sunt magnam hic saepe veniam quisquam. Animi veritatis molestias omnis, dolores recusandae praesentium, illum, hic provident ex dicta reprehenderit cupiditate adipisci deleniti repellat unde consectetur soluta! Mollitia nisi quaerat esse suscipit .</p>
+    </section>
+    
+</body>
+<script src="./js/anime.min.js"></script>
+<script>
+    const text = document.querySelector('.text');
+    text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>")
+
+    const animation = anime.timeline({
+        targets : '.text span',
+        easing : 'easeInOutExpo',
+        loop : true,
+    });
+    animation
+        .add({
+            rotate : function(){
+                return anime.random(-360, 360)
+            },
+            translateX : function(){
+                return anime.random(-500, 500)
+            },
+            translateY : function(){
+                return anime.random(-500, 500)
+            },
+            duration: 5000,
+            delay : anime.stagger(20),
+        })
+
+        .add({
+            rotate : 0,
+            translateX : 0,
+            translateY : 0,
+            duration: 5000,
+            delay : anime.stagger(20),
+        })
+</script>
+</html>
